@@ -22,12 +22,10 @@ module.exports = function (app) {
             var newReservation = new Reservation(req.body.name, req.body.phoneNumber, req.body.email, req.body.uniqueId);
        
             console.log("-");
-    
-           // console.log(newReservation);
-    
+        
             reservations.push(newReservation);
     
-            res.json(true);
+            res.json({newReservation,message:true});
         }
         else{
             var newReservation = new Reservation(req.body.name, req.body.phoneNumber, req.body.email, req.body.uniqueId);
@@ -37,9 +35,8 @@ module.exports = function (app) {
             console.log(newReservation);
     
             waitlist.push(newReservation);
-            res.json(false);
+            res.json({newReservation,message:false});
         }
 
-        //res.message();
     });
 };
