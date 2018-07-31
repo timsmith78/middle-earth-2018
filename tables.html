@@ -61,6 +61,33 @@
 	</div>
 
 </body>
+<script>
+	var URL
+	function table() {
+		$.ajax({ url: currentURL + "/api/tables", method: "GET" })
+			.done(function (tableData) {
+				for (var i = 0; i < tableData.length; i++) {
+					var tableSection = $("<div>");
+					tableSection.addClass('well');
+					tableSection.attr('id', 'tableWell-' + i + 1)
+					$('#tableSection').append(tableSection);
+				}
+			});
+	function waitlist() {
+			$.ajax({ url: currentURL + "/api/waitlist", method: "GET" })
+				.done(function (waitlistData) {
+					for (var i = 0; i < waitlistData.length; i++) {
 
+						var waitlist = $("<div>");
+						waitlist.addClass('well');
+						waitlist.attr('id', 'waitlistWell-' + i + 1)
+						$('#waitlistSection').append(waitlist);
 
+						var tableNumber = i + 1;
+						$("#waitlistWell-" + i + 1).append('<h2><span class="label label-primary">' + tableNumber + "</span> | " + waitlistData[i].customerID + "</h2>");
+					}
+				});
+		}	}
+
+</script>
 </html>
