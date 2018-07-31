@@ -8,13 +8,14 @@ var Reservation  = require("./reservation");
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 3000;
-require("./apirouting")(app)
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+console.log("Step 1");
+require("./apirouting")(app)
+console.log("Step 2");
 
-var waitlist = [];
-var reservations = [];
+
 
 
 app.listen(PORT, function() {
